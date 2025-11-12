@@ -35,6 +35,6 @@ void Product::setPromotion(bool status) {
 
 void Product::display() const {
     cout << " Product: " << this->name
-         << " Price: $" << this->price
+         << " Price: " << this->price
          << (this->onPromotion ? " (ON SALE!)" : "") << endl;
 }
