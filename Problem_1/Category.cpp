@@ -1,45 +1,55 @@
-#include "Category.h"
-#include <iterator> 
-#include <iostream>
-
+#include"Category.h"
+#include<iostream>
 using namespace std;
 
-Category::Category(string name) {
-    this->categoryName = name;
+Category::Category(string n) :name(n){}
+
+string Category::getName()
+{
+	return name;
 }
 
-string Category::getName() const {
-    return this->categoryName;
+void Category::AddProduct(const Product& p)
+{
+	products.push_back(p);
 }
 
-const list<Product>& Category::getProductList() const {
-    return this->products;
+void Category::RemoveProduct(const string& product_name)
+{
+	for (int i = 0; i < products.size(); i++)
+		if (products[i].getName() == product_name)
+		{
+			products.erase(products.begin() + i);
+			break;
+		}
 }
 
-void Category::addProduct(const Product& product) {
-    this->products.push_back(product);
+void Category::UpdateProduct(const string& product_name, double newprice, bool newpromotion)
+{
+	for (int i = 0; i < products.size(); i++)
+		if (products[i].getName() == product_name)
+		{
+			products[i].setPrice(newprice);
+			products[i].setPromotion(newpromotion);
+		}
+
+
 }
 
-void Category::removeProduct(string productName) {
-    for (list<Product>::iterator it = products.begin(); it != products.end(); ++it) {
-        if (it->getName() == productName) {
-            products.erase(it);
-            return; 
-        }
-    }
+vector<Product> Category::getProduct()
+{
+	return products;
 }
 
-Product* Category::findProductByName(string productName) {
-    for (list<Product>::iterator it = products.begin(); it != products.end(); ++it) {
-        if (it->getName() == productName) {
-            return &(*it); 
-        }
-    }
-    return nullptr; 
-}
+void Category::printCategory()
+{
+	cout << "category:" << name << endl;
+	cout << "the products inside this category are:" << endl;
+	for (int i = 0; i < products.size(); i++)
+	{
+		products[i].PrintProduct();
+			cout << endl;
 
-void Category::displayProducts() const {
-    for (const Product& p : this->products) {
-        p.display();
-    }
+	}
+
 }

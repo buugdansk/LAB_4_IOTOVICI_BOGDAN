@@ -1,39 +1,32 @@
-#include "Library.h"
+#include"Library.h"
+#include <string>
 #include <iostream>
-
 using namespace std;
 
-int main() {
-    Library Library("City Library");
+int main()
+{
+	Library lib("Library");
 
-    Library.addClient(Client("Andrei"));
-    Library.addClient(Client("Bogdan"));
-    Library.addClient(Client("Ciprian"));
+	Book b1("The Boy on the Wooden Box");
+	b1.addReviews(Review("Cristi","Fantastic"));
+	b1.addReviews(Review("Alex", "Heartbreaking book"));
+	Book b2("451� Fahrenheit");
+	b2.addReviews(Review("Andrei", "Very interesting concept"));
+	Book b3("The Great Gatsby");
+	b3.addReviews(Review("Stefan", "Amazing story"));
+	b3.addReviews(Review("Andrei", "One of my favorite book"));
 
-    Library.addBook(Book("Ultima noapte de dragoste", "Camil Petrescu"));
-    Library.addBook(Book("Ion", "Liviu Rebreanu"));
+	lib.addBook(b1);
+	lib.addBook(b2);
+	lib.addBook(b3);
 
-    Client* pAndrei = Library.findClientByName("Andrei");
-    Client* pBogdan = Library.findClientByName("Bogdan");
-    Client* pCiprian = Library.findClientByName("Ciprian");
-    
-    Book* p1 = Library.findBookByTitle("Ultima noapte de dragoste");
-    Book* p2 = Library.findBookByTitle("Ion");
+	lib.displayallBooks();
+	string text;
+	cin>>text;
 
-    if (p1 && pAndrei) {
-        p1->addReview("9/10", pAndrei);
-    }
-    if (p1 && pBogdan) {
-        p1->addReview("10/10", pBogdan);
-    }
-    if (p2 && pAndrei) {
-        p2->addReview("10/10", pAndrei);
-    }
-    if (p2 && pBogdan) {
-        p2->addReview("8/10", pBogdan);
-    }
-    if (p2 && pCiprian) {
-        p2->addReview("9/10", pCiprian);
-    }
-    return 0;
+	b1.searchforText(text);
+	b2.searchforText(text);
+	b3.searchforText(text);
+
+	
 }

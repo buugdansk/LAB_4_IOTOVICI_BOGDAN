@@ -1,23 +1,20 @@
 #pragma once
-#include <string>
-#include <list>
-#include "Review.h" 
-#include "Client.h" 
-
+#include"Review.h"
+#include<iostream>
+#include<string>
+#include<vector>
 using namespace std;
 
-class Book {
+class Book
+{
 private:
-    string title;
-    string author;
-    list<Review> reviews; 
+	string name;
+	vector<Review> reviews;
 
 public:
-    Book(string title, string author);
-
-    string getTitle() const;
-    string getAuthor() const;
-
-    void addReview(string content, const Client* reviewer);
-    const list<Review>& getReviews() const;
+	Book(string n = "");
+	string getName();
+	void addReviews(const Review& r );
+	void displayallReviews();
+	void searchforText(const string& text);
 };

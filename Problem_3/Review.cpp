@@ -1,14 +1,21 @@
-#include "Review.h"
+#include"Review.h"
+#include<iostream>
+#include<string>
+using namespace std;
 
-Review::Review(string content, const Client* reviewer) {
-    this->content = content;
-    this->reviewer = reviewer;
+Review::Review(string p,string r):Person(p),review(r){}
+
+string Review::getPerson()
+{
+	return Person;
 }
 
-string Review::getContent() const {
-    return this->content;
+string Review::getReview()
+{
+	return review;
 }
 
-const Client* Review::getReviewer() const {
-    return this->reviewer;
+void Review::printReview()
+{
+	cout << Person << "-" << review << endl;
 }

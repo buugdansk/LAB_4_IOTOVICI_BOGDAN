@@ -1,40 +1,42 @@
-#include "Product.h"
-#include <iostream> 
-
+#include"Product.h"
+#include<iostream>
 using namespace std;
 
-Product::Product(string name, double price, bool onPromotion) {
-    this->name = name;
-    this->price = price;
-    this->onPromotion = onPromotion;
+Product::Product(string n, double p, bool promo) :name(n), price(p), OnPromotion(promo){}
+
+string Product::getName()
+{
+	return name;
 }
 
-string Product::getName() const {
-    return this->name;
+double Product::getPrice()
+{
+	return price;
 }
 
-double Product::getPrice() const {
-    return this->price;
+bool Product::Promotion()
+{
+	return OnPromotion;
 }
 
-bool Product::isOnPromotion() const {
-    return this->onPromotion;
+void Product::setName(const string& n)
+{
+	name = n;
 }
 
-void Product::setName(string name) {
-    this->name = name;
+void Product::setPrice(double p)
+{
+	price = p;
 }
 
-void Product::setPrice(double price) {
-    this->price = price;
+void Product::setPromotion(bool promo)
+{
+	OnPromotion = promo;
 }
 
-void Product::setPromotion(bool status) {
-    this->onPromotion = status;
-}
-
-void Product::display() const {
-    cout << " Product: " << this->name
-         << " Price: " << this->price
-         << (this->onPromotion ? " (ON SALE!)" : "") << endl;
+void Product::PrintProduct()
+{
+	cout << name << " , " << price << " , ";
+	if (OnPromotion)
+		cout << "on promotion" << endl;
 }

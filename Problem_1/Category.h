@@ -1,24 +1,25 @@
 #pragma once
-#include <string>
-#include <list>
-#include "Product.h" 
-
+#include"Product.h"
+#include<iostream>
+#include<vector>
+#include<string>
 using namespace std;
 
-class Category {
+class Category 
+{
 private:
-    string categoryName;
-    list<Product> products;
+	string name;
+	vector<Product>products;
 
 public:
-    Category(string name);
 
-    string getName() const;
-    const list<Product>& getProductList() const;
+	Category(string n = "");
+	string getName();
+	void AddProduct(const Product& p);
+	void RemoveProduct(const string& product_name);
+	void UpdateProduct(const string& product_name, double newprice, bool newpromotion);
 
-    void addProduct(const Product& product);
-    void removeProduct(string productName);
-    Product* findProductByName(string productName);
+	vector<Product> getProduct();
 
-    void displayProducts() const;
+	void printCategory();
 };

@@ -1,25 +1,24 @@
 #pragma once
-#include <string>
-#include <iostream>
-
+#include<iostream>
+#include<string>
 using namespace std;
 
-class Product {
+class Product
+{
 private:
-    string name;
-    double price;
-    bool onPromotion;
+	string name;
+	double price;
+	bool OnPromotion;
 
 public:
-    Product(string name, double price, bool onPromotion = false);
+	Product(string n = "", double p = 0, bool promo=false);
 
-    string getName() const;
-    double getPrice() const;
-    bool isOnPromotion() const;
+	string getName();
+	double getPrice();
+	bool Promotion();
 
-    void setName(string name);
-    void setPrice(double price);
-    void setPromotion(bool status);
-    
-    void display() const;
+	void setName(const string& n);
+	void setPrice(double p);
+	void setPromotion(bool promo);
+	void PrintProduct();
 };

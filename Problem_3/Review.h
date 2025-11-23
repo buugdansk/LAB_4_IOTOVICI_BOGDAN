@@ -1,17 +1,17 @@
 #pragma once
-#include <string>
-#include "Client.h" 
-
+#include<iostream>
+#include<string>
 using namespace std;
 
-class Review {
+class Review
+{
 private:
-    string content;
-    const Client* reviewer; 
+	string Person;
+	string review;
 
 public:
-    Review(string content, const Client* reviewer);
-
-    string getContent() const;
-    const Client* getReviewer() const;
+	Review(string p = "", string r = "");
+	string getPerson();
+	string getReview();
+	void printReview();
 };

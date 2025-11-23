@@ -1,24 +1,38 @@
-#include "Book.h"
-#include <iterator>
+#include"Book.h"
+#include<iostream>
+#include<vector>
+#include<string>
+using namespace std;
 
-Book::Book(string title, string author) {
-    this->title = title;
-    this->author = author;
+Book::Book(string n):name(n){}
+
+string Book::getName()
+{
+	return name;
 }
 
-string Book::getTitle() const {
-    return this->title;
+void Book::addReviews(const Review& r)
+{
+	reviews.push_back(r);
 }
 
-string Book::getAuthor() const {
-    return this->author;
+void Book::displayallReviews()
+{
+	cout << name << ":" << endl;
+	for (int i = 0; i < reviews.size(); i++)
+	{
+		reviews[i].printReview();
+		cout << endl;
+	}
+	
 }
 
-void Book::addReview(string content, const Client* reviewer) {
-    Review newReview(content, reviewer);
-    this->reviews.push_back(newReview);
-}
-
-const list<Review>& Book::getReviews() const {
-    return this->reviews;
+void Book::searchforText(const string& text)
+{
+	for(int i=0;i<reviews.size();i++)
+		if (reviews[i].getPerson().find(text) != string::npos || reviews[i].getReview().find(text) != string::npos)
+		{
+			cout << name << ":" << endl << reviews[i].getPerson() << "-" << reviews[i].getReview();
+			cout << endl;
+		}
 }
